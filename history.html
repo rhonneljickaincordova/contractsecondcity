@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="secondCityApp">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Second City</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Timeline CSS -->
+    <link href="dist/css/timeline.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="dist/css/sb-admin-2.css" rel="stylesheet">
+
+    
+    <!-- Custom Fonts -->
+    <link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <style type="text/css">
+        
+        .brand{
+            background-color:#F5BB23!important;
+        }
+        .main-nav-bar{
+            margin-bottom: 0;background-color:#848282;
+        }
+        .contract-history{
+            color: white!important;
+            font-size: 14px;
+        }
+        .contract-history:hover{
+            text-decoration: underline;
+        }
+
+    </style>
+ 
+</head>
+
+<body ng-controller="historyCtrl" ng-cloak>
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top main-nav-bar" role="navigation" >
+            <div class="navbar-header brand" >
+                <a class="navbar-brand" href="index.html" ><p><strong><u>Second City</u></strong> <small>Roofing & Exteriors</small></p></a>
+            </div>
+            <div class="navbar-header" >
+                <a href="" class="navbar-brand contract-history" ng-click="onShowModal()">Contract History</a>
+            </div>  
+        </nav>
+        <br>
+          <div class="container-fluid">
+            <div class="alert alert-success alert-dismissible" role="alert" ng-show="sucecss_message">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <p>Successfully Deleted</p>
+            </div>
+              <table class="table table-striped" style="background-color: white!important;">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Client To </th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody ng-repeat="list in contract_list">
+               
+                  <tr class="clickable-row">
+                    <td><a href="" ng-click="onClickHistoryData(list.contract_information_id)">{{list.client_date}}</a></td>
+                    <td>{{list.client_to}}</td>
+                    <td>{{list.client_phone_1}}</td>
+                    <td>{{list.client_address}}</td>
+                    <td><button type="button" class="btn btn-danger" ng-click="onDeleteContractHistory(list.contract_information_id)"><i class="fa fa-trash-o"></i></button</td>
+                  </tr>
+                 
+                </tbody>
+              </table>
+            </div>
+      
+    	<div  style="background-color:#848282;position: fixed;bottom: 0; width: 100%;">
+    		<br> 
+    	</div>
+
+        <div id="delete_modal" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Contract History</h4>
+              </div>
+              <div class="modal-body">
+                <p>Are you sure to delete this contract?</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" ng-click="deleteContract()">Yes</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+              
+              </div>
+            </div>
+
+          </div>
+        </div>
+    </div>	
+    
+
+
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="bower_components/metisMenu/dist/metisMenu.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="bower_components/raphael/raphael-min.js"></script>
+    
+    <!-- Custom Theme JavaScript -->
+    <script src="dist/js/sb-admin-2.js"></script>
+
+
+    <script src="bower_components/angular/angular.min.js"></script>
+
+  
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+
+    <script src="bower_components/angular-ui-bootstrap-datetimepicker/datetimepicker.js"></script>
+
+     <script src="assets/history.js"></script>
+
+    
+
+
+ 	
+
+	
+
+
+   
+</body>
+
+</html>
+
+
+
